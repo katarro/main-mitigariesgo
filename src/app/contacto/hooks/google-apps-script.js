@@ -53,6 +53,7 @@ function formatearFecha(timestamp) {
 /**
  * Maneja peticiones OPTIONS para CORS
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function doOptions(e) {
   const output = ContentService.createTextOutput().setMimeType(
     ContentService.MimeType.TEXT
@@ -66,6 +67,7 @@ function doOptions(e) {
       "Access-Control-Max-Age": "86400",
     });
   } catch (error) {
+    console.log(error);
     // Headers no disponibles en entorno de testing
   }
 
@@ -88,6 +90,7 @@ function doPost(e) {
         "Access-Control-Allow-Headers": "Content-Type",
       });
     } catch (headerError) {
+      console.log(headerError);
       // Headers no disponibles en entorno de testing
     }
 
@@ -222,6 +225,7 @@ function doPost(e) {
 /**
  * Función para manejar peticiones GET (para testing)
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function doGet(e) {
   return ContentService.createTextOutput(
     JSON.stringify({
@@ -254,6 +258,7 @@ function saveToSheet(data) {
         JSON.stringify(data),
       ]);
     } catch (debugError) {
+      console.log(debugError);
       // Ignorar errores de debug
     }
 
@@ -303,6 +308,7 @@ function saveToSheet(data) {
         fechaFormateada = new Date().toLocaleString("es-CL");
       }
     } catch (error) {
+      console.log(error);
       fechaFormateada = new Date().toLocaleString("es-CL");
     }
 
@@ -340,6 +346,7 @@ function saveToSheet(data) {
         JSON.stringify(rowData),
       ]);
     } catch (debugError) {
+      console.log(debugError);
       // Ignorar errores de debug
     }
 
@@ -357,6 +364,7 @@ function saveToSheet(data) {
         JSON.stringify(insertedData),
       ]);
     } catch (debugError) {
+      console.log(debugError);
       // Ignorar errores de debug
     }
 
@@ -525,6 +533,7 @@ function logDebug(level, message, data = null) {
     }
   } catch (error) {
     // Si falla el log, no hacer nada para evitar loops infinitos
+    console.log(error);
   }
 }
 
@@ -532,6 +541,7 @@ function logDebug(level, message, data = null) {
  * Función de autorización de permisos
  * EJECUTA ESTA FUNCIÓN UNA VEZ en el editor para autorizar permisos
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function autorizarPermisos() {
   try {
     // Autorizar permisos de Google Sheets
@@ -565,6 +575,7 @@ function autorizarPermisos() {
 /**
  * Función de test para probar el sistema completo
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function testFunction() {
   console.log("=== INICIANDO TEST COMPLETO ===");
 
@@ -600,7 +611,7 @@ function testFunction() {
   console.log("=== TEST COMPLETADO ===");
   return result;
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function testFormateoFecha() {
   console.log("=== TEST FORMATEO FECHA ===");
 
@@ -628,7 +639,7 @@ function testFormateoFecha() {
   const result = saveToSheet(dataFrontend);
   console.log("Resultado saveToSheet:", result);
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function testConDatosRealesFrontend() {
   console.log("=== TEST CON DATOS REALES FRONTEND ===");
 
@@ -663,7 +674,7 @@ function testConDatosRealesFrontend() {
 
   return result;
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function testSoloFormateo() {
   console.log("=== TEST SOLO FORMATEO ===");
 
@@ -690,7 +701,7 @@ function testSoloFormateo() {
     return "ERROR";
   }
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function verificarEstructuraHoja() {
   try {
     const spreadsheet = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -731,7 +742,7 @@ function verificarEstructuraHoja() {
     console.error("Error verificando estructura:", error);
   }
 }
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function testDoPostCompleto() {
   console.log("=== TEST doPost COMPLETO ===");
 
@@ -761,6 +772,7 @@ function testDoPostCompleto() {
   return result;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function sendNotificationEmailSimple(data) {
   try {
     logDebug("INFO", "=== INICIO sendNotificationEmailSimple ===");
@@ -804,6 +816,7 @@ Enviado desde: ${data.source}
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function testPermisosDesdeWeb() {
   try {
     logDebug("INFO", "=== TEST PERMISOS DESDE WEB ===");
