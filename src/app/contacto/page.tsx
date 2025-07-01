@@ -14,6 +14,7 @@ const ContactPage: React.FC = () => {
 
   if (isSubmitted) {
     return <Success />;
+
   }
 
   return (
@@ -53,6 +54,7 @@ const ContactPage: React.FC = () => {
               Nuestro equipo de expertos está listo para ayudarte a implementar
               <strong className="text-blue-300"> Zero Risk AI</strong> en tu
               organización
+
             </p>
           </div>
         </div>
@@ -64,6 +66,7 @@ const ContactPage: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
             <ContactForm />
             <ContactInformation />
+
           </div>
         </div>
       </section>
