@@ -11,12 +11,12 @@ const HeroSection: React.FC = () => {
       {/* Background con overlay gradiente optimizado */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/obras-civiles.jpg"
+          src="/images/obras-civiles-pesada.png"
           alt="Trabajadores de minería analizando riesgos"
           fill
           className="object-cover"
           priority
-          quality={90}
+          quality={100}
         />
         {/* Overlay gradiente ajustado para proteger mejor el texto */}
         <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/80"></div>

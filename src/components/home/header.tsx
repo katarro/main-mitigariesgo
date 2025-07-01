@@ -3,6 +3,7 @@ import React from "react";
 import { Moon, Sun, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useHeader } from "src/hooks/use-header";
+import Link from "next/link";
 
 interface HeaderProps {
   isMenuOpen: boolean;
@@ -21,7 +22,7 @@ const Header: React.FC = () => {
   }
 
   return (
-    <header className="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 z-50 transition-all duration-500 shadow-sm dark:shadow-slate-900/20">
+    <header className="sticky top-0 bg-white/50 dark:bg-slate-900/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-700/50 z-50 transition-all duration-500 shadow-sm dark:shadow-slate-900/20">
       <div className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo Section - Mejorado */}
@@ -61,29 +62,30 @@ const Header: React.FC = () => {
             {/* Desktop Navigation - Mejorado */}
             <nav className="hidden md:flex items-center space-x-1 lg:space-x-2">
               {[
-                { href: "#inicio", label: "Inicio" },
-                { href: "#como-funciona", label: "Cómo Funciona" },
-                { href: "#funcionalidades", label: "Funcionalidades" },
-                { href: "#planes", label: "Planes y Precios" },
+                { href: "/#inicio", label: "Inicio" },
+                { href: "/#como-funciona", label: "Cómo Funciona" },
+                { href: "/#funcionalidades", label: "Funcionalidades" },
+                { href: "/#planes", label: "Planes y Precios" },
+                { href: "/contacto", label: "Contacto" },
               ].map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   className="relative px-3 lg:px-4 py-2 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 text-sm lg:text-base font-medium group rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800/50"
                 >
                   {item.label}
                   <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-blue-600 group-hover:w-full group-hover:left-0 transition-all duration-300 rounded-full"></span>
-                </a>
+                </Link>
               ))}
 
               {/* CTA Button - Mejorado */}
-              <a
+              <Link
                 href="https://app.mitigariesgo.cl"
                 className="group relative ml-2 lg:ml-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 text-white px-4 lg:px-6 py-2.5 rounded-xl transition-all duration-300 text-sm lg:text-base font-semibold shadow-lg hover:shadow-xl hover:shadow-blue-500/25 transform hover:-translate-y-0.5 hover:scale-105"
               >
                 <span className="relative z-10">Iniciar Sesión</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
-              </a>
+              </Link>
             </nav>
 
             {/* Dark mode toggle - Mejorado - Movido después de la navegación */}
@@ -148,12 +150,13 @@ const Header: React.FC = () => {
           <nav className="mt-4 pb-4 border-t border-slate-200/50 dark:border-slate-700/50 pt-4">
             <div className="flex flex-col space-y-2">
               {[
-                { href: "#inicio", label: "Inicio" },
-                { href: "#como-funciona", label: "Cómo Funciona" },
-                { href: "#funcionalidades", label: "Funcionalidades" },
-                { href: "#planes", label: "Planes y Precios" },
+                { href: "/#inicio", label: "Inicio" },
+                { href: "/#como-funciona", label: "Cómo Funciona" },
+                { href: "/#funcionalidades", label: "Funcionalidades" },
+                { href: "/#planes", label: "Planes y Precios" },
+                { href: "/contacto", label: "Contacto" },
               ].map((item, index) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   className="group px-4 py-3 text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 font-medium"
@@ -169,11 +172,11 @@ const Header: React.FC = () => {
                     <span className="w-1.5 h-1.5 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                     <span>{item.label}</span>
                   </span>
-                </a>
+                </Link>
               ))}
 
               {/* Mobile CTA */}
-              <a
+              <Link
                 href="https://app.mitigariesgo.cl"
                 className="mt-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 dark:from-blue-500 dark:to-blue-600 dark:hover:from-blue-600 dark:hover:to-blue-700 text-white px-6 py-3 rounded-xl text-center transition-all duration-300 font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 style={{
@@ -184,7 +187,7 @@ const Header: React.FC = () => {
                 }}
               >
                 Iniciar Sesión
-              </a>
+              </Link>
             </div>
           </nav>
         </div>
