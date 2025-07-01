@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDown, Mail } from "lucide-react";
 import { faqs } from "src/utils/consts";
+import Link from "next/link";
 
 const FAQSection: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -53,13 +54,13 @@ const FAQSection: React.FC = () => {
           <p className="text-slate-600 dark:text-slate-300 mb-4 text-sm sm:text-base">
             ¿No encuentras la respuesta que buscas?
           </p>
-          <a
-            href="mailto:contacto@mitigariesgo.cl"
+          <Link
+            href="contacto"
             className="inline-flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold text-sm sm:text-base"
           >
             <Mail className="h-4 w-4" />
             <span>Contáctanos directamente</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
