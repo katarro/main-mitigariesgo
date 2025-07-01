@@ -12,7 +12,8 @@ import {
   ArrowRight,
   Building,
   Users,
-  Shield
+  Shield,
+  AlertCircle
 } from "lucide-react";
 import Image from "next/image";
 import Header from "../../components/home/header";
@@ -40,6 +41,7 @@ const ContactPage: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -52,12 +54,49 @@ const ContactPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
     
-    // Simular envío del formulario
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      // URL del Google Apps Script Web App
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+      
+      // Preparar los datos para enviar
+      const submitData = {
+        ...formData,
+        timestamp: new Date().toISOString(),
+        source: 'Página de Contacto - Zero Risk AI'
+      };
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Importante para Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submitData)
+      });
+
+      // Como usamos no-cors, no podemos leer la respuesta
+      // Asumimos que fue exitoso si no hay error
+      setIsSubmitted(true);
+      
+      // Limpiar el formulario
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        subject: "",
+        message: "",
+        plan: ""
+      });
+
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      setSubmitError('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente o contáctanos directamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -119,13 +158,20 @@ const ContactPage: React.FC = () => {
               </h2>
               
               <p className="text-slate-600 dark:text-slate-300 mb-8">
-                Gracias por contactarnos. Nuestro equipo se pondrá en contacto contigo en las próximas 24 horas.
+                Gracias por contactarnos. Tu mensaje ha sido registrado y nuestro equipo se pondrá en contacto contigo en las próximas 24 horas.
               </p>
               
               <div className="space-y-4">
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="inline-flex items-center justify-center w-full space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"
+                >
+                  <span>Enviar Otro Mensaje</span>
+                </button>
+                
                 <a
                   href="/"
-                  className="inline-flex items-center justify-center w-full space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300"
+                  className="inline-flex items-center justify-center w-full space-x-2 bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-xl font-semibold hover:bg-slate-200 dark:hover:bg-slate-600 transition-all duration-300"
                 >
                   <span>Volver al Inicio</span>
                   <ArrowRight className="h-4 w-4" />
@@ -133,7 +179,7 @@ const ContactPage: React.FC = () => {
                 
                 <a
                   href="https://app.mitigariesgo.cl"
-                  className="inline-flex items-center justify-center w-full space-x-2 bg-slate-100 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-6 py-3 rounded-xl font-semibold hover:bg-slate-200 dark:hover:bg-slate-600 transition-all duration-300"
+                  className="inline-flex items-center justify-center w-full space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300"
                 >
                   <span>Probar Zero Risk AI</span>
                 </a>
@@ -210,6 +256,18 @@ const ContactPage: React.FC = () => {
                     Completa el formulario y nuestro equipo se pondrá en contacto contigo para una consulta personalizada.
                   </p>
                 </div>
+
+                {/* Error Message */}
+                {submitError && (
+                  <div className="mb-6 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl">
+                    <div className="flex items-center space-x-2">
+                      <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
+                      <p className="text-red-700 dark:text-red-300 text-sm">
+                        {submitError}
+                      </p>
+                    </div>
+                  </div>
+                )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
