@@ -58,7 +58,8 @@ const ContactPage: React.FC = () => {
     
     try {
       // URL del Google Apps Script Web App
-      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+      const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/a/macros/wimespa.com/s/AKfycbwuSaF2SkYjEycjautBlljETjeUG-_R7-qNV4xdlh7b-MHiZmsNBZxBGbp165zTY5eayg/exec";
       
       // Preparar los datos para enviar
       const submitData = {
