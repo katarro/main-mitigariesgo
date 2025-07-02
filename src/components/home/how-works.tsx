@@ -1,6 +1,7 @@
 import React from "react";
-import { ArrowRight, Clock, Zap, Play } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import { howItWorks } from "src/utils/consts";
+import Image from "next/image";
 
 const HowItWorksSection: React.FC = () => {
   return (
@@ -132,37 +133,18 @@ const HowItWorksSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Time comparison section - Mantenido igual */}
+        {/* Image Section - Reemplaza la comparación de tiempos */}
         <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
-          <h3 className="text-xl sm:text-2xl font-bold text-center text-slate-800 dark:text-white mb-6 sm:mb-8">
-            Comparación de Tiempos
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-            <div className="text-center p-4 sm:p-6 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800">
-              <Clock className="h-10 w-10 sm:h-12 sm:w-12 text-red-500 dark:text-red-400 mx-auto mb-4" />
-              <h4 className="text-base sm:text-lg font-semibold text-red-700 dark:text-red-400 mb-2">
-                Método Tradicional
-              </h4>
-              <div className="text-2xl sm:text-3xl font-bold text-red-600 dark:text-red-400 mb-2">
-                1+ dias
-              </div>
-              <p className="text-red-600 dark:text-red-400 text-xs sm:text-sm">
-                Análisis manual, consultores externos, reuniones,
-                revisiones...
-              </p>
-            </div>
-            <div className="text-center p-4 sm:p-6 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800">
-              <Zap className="h-10 w-10 sm:h-12 sm:w-12 text-green-500 dark:text-green-400 mx-auto mb-4" />
-              <h4 className="text-base sm:text-lg font-semibold text-green-700 dark:text-green-400 mb-2">
-                Con Zero Risk AI
-              </h4>
-              <div className="text-2xl sm:text-3xl font-bold text-green-600 dark:text-green-400 mb-2">
-                10 minutos
-              </div>
-              <p className="text-green-600 dark:text-green-400 text-xs sm:text-sm">
-                Automatizado, preciso, listo para implementar
-              </p>
-            </div>
+          <div className="relative w-full h-64 sm:h-80 lg:h-96 rounded-xl overflow-hidden">
+            <Image
+              src="/images/estrecho-de-mano.jpg"
+              alt="Profesionales estrechando la mano, simbolizando la confianza y colaboración en la gestión de riesgos"
+              fill
+              className="object-cover transition-transform duration-300 hover:scale-105"
+              quality={100}
+            />
+            {/* Overlay sutil para mejorar la legibilidad si hay texto encima */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
           </div>
         </div>
       </div>
