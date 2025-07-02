@@ -1,7 +1,6 @@
 import React from "react";
 import { ArrowRight, Clock, Zap, Play } from "lucide-react";
 import { howItWorks } from "src/utils/consts";
-import Image from "next/image";
 
 const HowItWorksSection: React.FC = () => {
   return (
@@ -87,42 +86,48 @@ const HowItWorksSection: React.FC = () => {
           </div>
 
           {/* Right Column - Steps */}
-          <div className="order-1 lg:order-2 space-y-8">
-            {howItWorks.map((step, index) => (
-              <div key={index} className="flex items-start space-x-6">
-                {/* Número del paso */}
-                <div className="flex-shrink-0">
-                  <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
-                    {step.step}
-                  </div>
-                </div>
+          <div className="order-1 lg:order-2">
+            <div className="space-y-8">
+              {howItWorks.map((step, index) => (
+                <div key={index} className="relative">
+                  <div className="flex items-start space-x-6">
+                    {/* Número del paso */}
+                    <div className="flex-shrink-0 relative z-10">
+                      <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
+                        {step.step}
+                      </div>
+                    </div>
 
-                {/* Contenido del paso */}
-                <div className="flex-1 pb-8">
-                  <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                    {step.description}
-                  </p>
+                    {/* Contenido del paso */}
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-3">
+                        {step.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
                   
                   {/* Línea conectora (excepto en el último paso) */}
                   {index < howItWorks.length - 1 && (
-                    <div className="absolute left-6 mt-4 w-0.5 h-16 bg-gradient-to-b from-blue-300 to-blue-200 dark:from-blue-600 dark:to-blue-700"></div>
+                    <div className="flex justify-start ml-6 mt-4 mb-4">
+                      <div className="w-0.5 h-8 bg-gradient-to-b from-blue-300 to-blue-200 dark:from-blue-600 dark:to-blue-700"></div>
+                    </div>
                   )}
                 </div>
-              </div>
-            ))}
+              ))}
 
-            {/* CTA Button */}
-            <div className="pt-4">
-              <a
-                href="https://app.mitigariesgo.cl"
-                className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105"
-              >
-                <span>Comenzar Ahora</span>
-                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </a>
+              {/* CTA Button */}
+              <div className="pt-4 ml-18">
+                <a
+                  href="https://app.mitigariesgo.cl"
+                  className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105 group"
+                >
+                  <span>Comenzar Ahora</span>
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
