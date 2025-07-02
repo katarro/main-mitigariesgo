@@ -4,6 +4,7 @@ import Header from "../components/home/header";
 import HeroSection from "../components/home/hero";
 import FeaturesSection from "../components/home/features";
 import HowItWorksSection from "../components/home/how-works";
+import ProjectionsSection from "../components/home/projections";
 import PricingSection from "../components/home/plans";
 import FAQSection from "../components/home/faqs";
 import FinalCTASection from "../components/home/cta";
@@ -19,6 +20,8 @@ const Home: React.FC = () => {
       <FeaturesSection />
 
       <HowItWorksSection />
+
+      <ProjectionsSection />
 
       <PricingSection />
 
