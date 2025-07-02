@@ -1,6 +1,5 @@
 import React from "react";
 import { BarChart3, FileText, TrendingUp, Eye, Download, Filter } from "lucide-react";
-import Image from "next/image";
 
 const ProjectionsSection: React.FC = () => {
   return (
@@ -101,32 +100,44 @@ const ProjectionsSection: React.FC = () => {
 
           {/* Right Column - Visual Content */}
           <div className="space-y-8">
-            {/* Main Dashboard Image */}
+            {/* Main Dashboard Video */}
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-2xl"></div>
               <div className="relative bg-gray-50/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-2xl p-6 border border-gray-200/60 dark:border-slate-700/50 shadow-xl">
-                <div className="relative h-80 w-full rounded-xl overflow-hidden shadow-inner bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
-                  {/* Placeholder para imagen del dashboard */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center space-y-4">
-                      <BarChart3 className="h-16 w-16 text-blue-400 mx-auto" />
-                      <div className="space-y-2">
-                        <div className="text-lg font-semibold text-slate-700 dark:text-slate-300">
-                          Dashboard Interactivo
-                        </div>
-                        <div className="text-sm text-slate-500 dark:text-slate-400">
-                          Visualización en tiempo real
+                <div className="relative h-80 w-full rounded-xl overflow-hidden shadow-inner">
+                  {/* Video del Dashboard */}
+                  <video
+                    className="w-full h-full object-cover rounded-xl"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                  >
+                    <source src="/media/dashboard.webm" type="video/webm" />
+                    {/* Fallback para navegadores que no soporten WebM */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
+                      <div className="text-center space-y-4">
+                        <BarChart3 className="h-16 w-16 text-blue-400 mx-auto" />
+                        <div className="space-y-2">
+                          <div className="text-lg font-semibold text-slate-700 dark:text-slate-300">
+                            Dashboard Interactivo
+                          </div>
+                          <div className="text-sm text-slate-500 dark:text-slate-400">
+                            Tu navegador no soporta este video
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  {/* Overlay sutil */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/10 to-transparent"></div>
+                  </video>
+                  
+                  {/* Overlay sutil para mejorar la legibilidad del badge */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/10 pointer-events-none"></div>
                 </div>
 
                 {/* Badge flotante */}
                 <div className="absolute -top-3 -right-3 bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">
-                  ✓ Tiempo Real
+                  ✓ En Vivo
                 </div>
               </div>
             </div>
