@@ -1,5 +1,12 @@
 import React from "react";
-import { BarChart3, FileText, TrendingUp, Eye, Download, Filter } from "lucide-react";
+import {
+  BarChart3,
+  FileText,
+  TrendingUp,
+  Eye,
+  Download,
+  Filter,
+} from "lucide-react";
 
 const ProjectionsSection: React.FC = () => {
   return (
@@ -21,7 +28,7 @@ const ProjectionsSection: React.FC = () => {
 
           <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed font-medium">
             Combina tus datos históricos con{" "}
-            <strong className="text-blue-600 dark:text-blue-400 font-semibold">
+            <strong className="text-accent-500 dark:text-blue-400 font-semibold">
               benchmarks sectoriales
             </strong>{" "}
             y genera reportes PDF/Excel listos para auditorías.
@@ -36,13 +43,14 @@ const ProjectionsSection: React.FC = () => {
               <h3 className="text-2xl lg:text-3xl font-bold text-slate-800 dark:text-white">
                 Dashboard Interactivo de Alto Rendimiento
               </h3>
-              
+
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                 Nuestro dashboard interactivo te permite{" "}
-                <strong className="text-blue-600 dark:text-blue-400">
+                <strong className="text-info-500 dark:text-blue-400">
                   filtrar y comparar en segundos
                 </strong>
-                , visualizando tendencias de riesgo y áreas críticas de forma inmediata.
+                , visualizando tendencias de riesgo y áreas críticas de forma
+                inmediata.
               </p>
             </div>
 
@@ -52,25 +60,32 @@ const ProjectionsSection: React.FC = () => {
                 {
                   icon: <TrendingUp className="h-6 w-6" />,
                   title: "Análisis de Tendencias",
-                  description: "Identifica patrones y evolución de riesgos a lo largo del tiempo"
+                  description:
+                    "Identifica patrones y evolución de riesgos a lo largo del tiempo",
                 },
                 {
                   icon: <Eye className="h-6 w-6" />,
                   title: "Visualización Inmediata",
-                  description: "Gráficos interactivos que revelan áreas críticas al instante"
+                  description:
+                    "Gráficos interactivos que revelan áreas críticas al instante",
                 },
                 {
                   icon: <Filter className="h-6 w-6" />,
                   title: "Filtros Avanzados",
-                  description: "Segmenta datos por departamento, fecha, tipo de riesgo y más"
+                  description:
+                    "Segmenta datos por departamento, fecha, tipo de riesgo y más",
                 },
                 {
                   icon: <Download className="h-6 w-6" />,
                   title: "Exportación Profesional",
-                  description: "Reportes PDF/Excel listos para auditorías y presentaciones"
-                }
+                  description:
+                    "Reportes PDF/Excel listos para auditorías y presentaciones",
+                },
               ].map((feature, index) => (
-                <div key={index} className="flex items-start space-x-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors duration-300">
+                <div
+                  key={index}
+                  className="flex items-start space-x-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors duration-300"
+                >
                   <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl text-blue-600 dark:text-blue-400 flex-shrink-0">
                     {feature.icon}
                   </div>
@@ -90,7 +105,7 @@ const ProjectionsSection: React.FC = () => {
             <div className="pt-4">
               <a
                 href="https://app.mitigariesgo.cl"
-                className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105"
+                className="inline-flex items-center space-x-3 bg-accent-500 from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105"
               >
                 <BarChart3 className="h-5 w-5" />
                 <span>Ver Dashboard en Acción</span>
@@ -107,7 +122,7 @@ const ProjectionsSection: React.FC = () => {
                 <div className="relative h-80 w-full rounded-xl overflow-hidden shadow-inner">
                   {/* Video del Dashboard */}
                   <video
-                    className="w-full h-full object-cover rounded-xl"
+                    className="w-full h-64 sm:h-80 lg:h-96 object-contain rounded-xl bg-gray-100 dark:bg-gray-800"
                     autoPlay
                     loop
                     muted
@@ -130,7 +145,7 @@ const ProjectionsSection: React.FC = () => {
                       </div>
                     </div>
                   </video>
-                  
+
                   {/* Overlay sutil para mejorar la legibilidad del badge */}
                   <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/10 pointer-events-none"></div>
                 </div>
@@ -182,7 +197,8 @@ const ProjectionsSection: React.FC = () => {
               Datos que Hablan por Sí Solos
             </h3>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-              Nuestras proyecciones inteligentes han ayudado a cientos de empresas a tomar decisiones más informadas
+              Nuestras proyecciones inteligentes han ayudado a cientos de
+              empresas a tomar decisiones más informadas
             </p>
           </div>
 
@@ -191,18 +207,18 @@ const ProjectionsSection: React.FC = () => {
               {
                 number: "98%",
                 label: "Precisión en Predicciones",
-                description: "Basado en análisis de datos históricos"
+                description: "Basado en análisis de datos históricos",
               },
               {
                 number: "75%",
                 label: "Reducción de Incidentes",
-                description: "En empresas que usan nuestras proyecciones"
+                description: "En empresas que usan nuestras proyecciones",
               },
               {
                 number: "24/7",
                 label: "Monitoreo Continuo",
-                description: "Alertas automáticas en tiempo real"
-              }
+                description: "Alertas automáticas en tiempo real",
+              },
             ].map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl lg:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">

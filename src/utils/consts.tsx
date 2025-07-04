@@ -256,7 +256,7 @@ export const sections = [
   {
     title: "Recursos",
     links: [
-      { href: "#", label: "Centro de Ayuda" },
+      { href: "/contacto", label: "Centro de Ayuda" },
       {
         href: "http://github.com/ZenomyAI-comunidad/ZenomyLabs",
         label: "Zenomy Labs",
