@@ -1,166 +1,163 @@
 import React from "react";
-import { ArrowRight, Play, Clock, Zap } from "lucide-react";
-import { howItWorks } from "src/utils/consts";
-import Image from "next/image";
+import { ArrowRight, Clock, Play, Zap } from "lucide-react";
+import { howItWorks } from "../../utils/consts";
 
 const HowItWorksSection: React.FC = () => {
   return (
     <section
-      className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-800 dark:to-slate-900 transition-colors duration-300"
+      className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-corporate-blue-secondary transition-colors duration-300"
       id="como-funciona"
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 dark:text-white mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-corporate-blue-primary dark:text-white mb-4">
             Así funciona Zero Risk AI
           </h2>
-          <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto px-4 sm:px-0">
+          <p className="text-lg sm:text-xl text-corporate-blue-primary/70 dark:text-white/85 max-w-2xl mx-auto px-4 sm:px-0">
             Un proceso <strong>simplificado</strong> que transforma semanas de
             trabajo en{" "}
-            <strong className="text-blue-600 dark:text-blue-400">
+            <strong className="text-corporate-orange-primary dark:text-corporate-orange-primary-light">
               minutos de eficiencia
             </strong>
           </p>
         </div>
 
-        {/* Main Content Grid - Video + Steps */}
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start mb-16">
-          {/* Left Column - Video Vertical */}
-          <div className="order-2 lg:order-1">
-            <div className="relative max-w-sm mx-auto lg:mx-0">
-              {/* Decoración de fondo */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-2xl"></div>
-              
-              {/* Contenedor del video */}
-              <div className="relative bg-gray-50/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-2xl p-4 border border-gray-200/60 dark:border-slate-700/50 shadow-xl">
-                <div className="relative aspect-[9/16] w-full rounded-xl overflow-hidden shadow-inner bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
-                  {/* Video Vertical */}
-                  <video
-                    className="w-full h-full object-cover rounded-xl"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                  >
-                    <source src="/media/proceso-vertical.webm" type="video/webm" />
-                    <source src="/media/proceso-vertical.mp4" type="video/mp4" />
-                    
-                    {/* Fallback para navegadores que no soporten el video */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center space-y-4 p-6">
-                        <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto">
-                          <Play className="h-8 w-8 text-blue-500" />
+        {/* Contenedor principal centrado verticalmente */}
+        <div className="flex flex-col items-center space-y-16">
+          {/* Video Centrado */}
+          <div className="relative max-w-4xl w-full">
+            {/* Decoración de fondo sin gradientes */}
+            <div className="absolute -inset-4 bg-corporate-orange-primary/15 dark:bg-info-500/25 rounded-3xl blur-2xl"></div>
+
+            {/* Contenedor del video */}
+            <div className="relative bg-gray-50/90 dark:bg-corporate-blue-primary/30 backdrop-blur-lg rounded-2xl p-6 border border-corporate-orange-primary/20 dark:border-info-500/30 shadow-corporate">
+              <div className="relative w-full rounded-xl overflow-hidden shadow-inner bg-corporate-blue-primary/5 dark:bg-corporate-blue-secondary/30">
+                {/* Video Vertical */}
+                <video
+                  className="w-full h-full object-cover rounded-xl"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                >
+                  <source
+                    src="/media/video-demostrativo.mp4"
+                    type="video/mp4"
+                  />
+
+                  {/* Fallback para navegadores que no soporten el video */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center space-y-4 p-6">
+                      <div className="w-16 h-16 bg-corporate-orange-primary/20 dark:bg-info-500/30 rounded-full flex items-center justify-center mx-auto">
+                        <Play className="h-8 w-8 text-corporate-orange-primary dark:text-info-500" />
+                      </div>
+                      <div className="space-y-2">
+                        <div className="text-lg font-semibold text-corporate-blue-primary dark:text-white">
+                          Proceso Zero Risk AI
                         </div>
-                        <div className="space-y-2">
-                          <div className="text-lg font-semibold text-slate-700 dark:text-slate-300">
-                            Proceso Zero Risk AI
-                          </div>
-                          <div className="text-sm text-slate-500 dark:text-slate-400">
-                            Video no disponible
-                          </div>
+                        <div className="text-sm text-corporate-blue-primary/70 dark:text-white/70">
+                          Video no disponible
                         </div>
                       </div>
                     </div>
-                  </video>
-                  
-                  {/* Overlay sutil */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/5 pointer-events-none"></div>
-                </div>
-
-                {/* Badge flotante */}
-                <div className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">
-                  ✓ Proceso Real
-                </div>
-
-                {/* Info flotante inferior */}
-                <div className="absolute -bottom-4 -left-4 bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm text-slate-800 dark:text-gray-50 px-5 py-3 rounded-xl shadow-lg border border-gray-200/60 dark:border-slate-700/50">
-                  <div className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                    En Tiempo Real
                   </div>
-                  <div className="text-xs text-slate-600 dark:text-slate-400">
-                    Proceso completo
-                  </div>
+                </video>
+
+                {/* Overlay sutil */}
+                <div className="absolute inset-0 bg-black/5 dark:bg-black/10 pointer-events-none"></div>
+              </div>
+
+              {/* Badge flotante */}
+              <div className="absolute -top-3 -right-3 bg-info-500 dark:bg-info-500 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">
+                ✓ Proceso Real
+              </div>
+
+              {/* Info flotante inferior */}
+              <div className="absolute -bottom-4 -left-4 bg-white/95 dark:bg-corporate-blue-primary/95 backdrop-blur-sm text-corporate-blue-primary dark:text-white px-5 py-3 rounded-xl shadow-corporate border border-corporate-orange-primary/20 dark:border-info-500/30">
+                <div className="text-sm font-semibold text-info-500 dark:text-info-500">
+                  En Tiempo Real
+                </div>
+                <div className="text-xs text-corporate-blue-primary/70 dark:text-white/70">
+                  Proceso completo
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Steps */}
-          <div className="order-1 lg:order-2">
-            <div className="space-y-8">
+          {/* Pasos - Alineados horizontalmente */}
+          <div className="w-full flex justify-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-4xl">
               {howItWorks.map((step, index) => (
-                <div key={index} className="relative">
-                  <div className="flex items-start space-x-6">
-                    {/* Número del paso */}
-                    <div className="flex-shrink-0 relative z-10">
-                      <div className="bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold shadow-lg">
-                        {step.step}
-                      </div>
-                    </div>
-
-                    {/* Contenido del paso */}
-                    <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-3">
-                        {step.title}
-                      </h3>
-                      <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                        {step.description}
-                      </p>
+                <div key={index} className="relative text-center">
+                  {/* Número del paso */}
+                  <div className="flex justify-center mb-4">
+                    <div className="bg-corporate-orange-primary dark:bg-info-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold shadow-accent dark:shadow-info-500/40">
+                      {step.step}
                     </div>
                   </div>
-                  
-                  {/* Línea conectora (excepto en el último paso) */}
+
+                  {/* Contenido del paso */}
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-semibold text-corporate-blue-primary dark:text-white mb-3">
+                      {step.title}
+                    </h3>
+                    <p className="text-corporate-blue-primary/70 dark:text-white/80 leading-relaxed text-sm sm:text-base">
+                      {step.description}
+                    </p>
+                  </div>
+
+                  {/* Flecha conectora (excepto en el último paso) */}
                   {index < howItWorks.length - 1 && (
-                    <div className="flex justify-start ml-6 mt-4 mb-4">
-                      <div className="w-0.5 h-8 bg-gradient-to-b from-blue-300 to-blue-200 dark:from-blue-600 dark:to-blue-700"></div>
+                    <div className="hidden lg:block absolute top-8 -right-6 transform translate-x-full">
+                      <ArrowRight className="h-6 w-6 text-corporate-orange-primary dark:text-info-500" />
                     </div>
                   )}
                 </div>
               ))}
-
-              {/* CTA Button */}
-              <div className="pt-4 ml-18">
-                <a
-                  href="https://app.mitigariesgo.cl"
-                  className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105 group"
-                >
-                  <span>Comenzar Ahora</span>
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
             </div>
+          </div>
+
+          {/* CTA Button centrado */}
+          <div>
+            <a
+              href="https://app.mitigariesgo.cl"
+              className="inline-flex items-center space-x-3 bg-corporate-orange-primary  hover:bg-corporate-orange-primary-dark dark:hover:bg-info-600 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-accent hover:shadow-accent dark:shadow-info-500/40 dark:hover:shadow-info-500/60 transform hover:-translate-y-0.5 hover:scale-105 group"
+            >
+              <span>Comenzar Ahora</span>
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
           </div>
         </div>
 
         {/* Time Comparison - Versión Compacta */}
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white dark:bg-slate-800 p-4 sm:p-6 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700">
-            <h3 className="text-lg sm:text-xl font-bold text-center text-slate-800 dark:text-white mb-4 sm:mb-6">
+        <div className="max-w-2xl mx-auto mt-16">
+          <div className="bg-white dark:bg-corporate-blue-secondary/80 p-4 sm:p-6 rounded-2xl shadow-corporate dark:shadow-info-500/20 border border-corporate-orange-primary/20 dark:border-info-500/50 backdrop-blur-sm">
+            <h3 className="text-lg sm:text-xl font-bold text-center text-corporate-blue-primary dark:text-white mb-4 sm:mb-6">
               Comparación de Tiempos
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-              <div className="text-center p-3 sm:p-4 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800">
-                <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-red-500 dark:text-red-400 mx-auto mb-2 sm:mb-3" />
-                <h4 className="text-sm sm:text-base font-semibold text-red-700 dark:text-red-400 mb-1 sm:mb-2">
+              <div className="text-center p-3 sm:p-4 bg-red-50 dark:bg-red-950/40 rounded-xl border border-red-200 dark:border-red-700/60 backdrop-blur-sm">
+                <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-red-500 dark:text-red-300 mx-auto mb-2 sm:mb-3" />
+                <h4 className="text-sm sm:text-base font-semibold text-red-700 dark:text-red-200 mb-1 sm:mb-2">
                   Método Tradicional
                 </h4>
-                <div className="text-xl sm:text-2xl font-bold text-red-600 dark:text-red-400 mb-1 sm:mb-2">
+                <div className="text-xl sm:text-2xl font-bold text-red-600 dark:text-red-300 mb-1 sm:mb-2">
                   1+ días
                 </div>
-                <p className="text-red-600 dark:text-red-400 text-xs sm:text-sm">
+                <p className="text-red-600 dark:text-red-200/80 text-xs sm:text-sm">
                   Análisis manual, consultores externos, reuniones...
                 </p>
               </div>
-              <div className="text-center p-3 sm:p-4 bg-green-50 dark:bg-green-900/20 rounded-xl border border-green-200 dark:border-green-800">
-                <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-green-500 dark:text-green-400 mx-auto mb-2 sm:mb-3" />
-                <h4 className="text-sm sm:text-base font-semibold text-green-700 dark:text-green-400 mb-1 sm:mb-2">
+              <div className="text-center p-3 sm:p-4 bg-corporate-orange-primary/10 dark:bg-info-500/30 rounded-xl border border-corporate-orange-primary/30 dark:border-info-400/60 backdrop-blur-sm">
+                <Zap className="h-6 w-6 sm:h-8 sm:w-8 text-corporate-orange-primary dark:text-info-400 mx-auto mb-2 sm:mb-3" />
+                <h4 className="text-sm sm:text-base font-semibold text-corporate-orange-primary dark:text-info-300 mb-1 sm:mb-2">
                   Con Zero Risk AI
                 </h4>
-                <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400 mb-1 sm:mb-2">
+                <div className="text-xl sm:text-2xl font-bold text-corporate-orange-primary dark:text-info-300 mb-1 sm:mb-2">
                   10 minutos
                 </div>
-                <p className="text-green-600 dark:text-green-400 text-xs sm:text-sm">
+                <p className="text-corporate-orange-primary/80 dark:text-info-200/90 text-xs sm:text-sm">
                   Automatizado, preciso, listo para implementar
                 </p>
               </div>

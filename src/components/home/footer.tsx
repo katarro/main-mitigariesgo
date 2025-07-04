@@ -11,15 +11,12 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-3 mb-4">
               <Image
-                src="/logo/klogo mitigariesgo.cl-03.svg"
+                src="/logo/logo-claro.svg"
                 alt="Zero Risk AI Logo"
                 width={120}
                 height={40}
                 className="h-6 sm:h-8 w-auto"
               />
-              <span className="text-base sm:text-lg font-bold">
-                Zero Risk AI
-              </span>
             </div>
             <p className="text-slate-400 mb-4 text-xs sm:text-sm">
               Revolucionando la gestión de riesgos con inteligencia artificial.

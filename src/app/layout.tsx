@@ -14,9 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zero Risk AI",
+  title: "Mitiga Riesgo",
   description:
     "Crea matrices de riesgo en minutos con inteligencia artificial. Reduce el tiempo de análisis en 95%.",
+  icons: {
+    icon: "logo/icon.svg",
+  },
 };
 
 export default function RootLayout({
