@@ -129,7 +129,7 @@ const ProjectionsSection: React.FC = () => {
                     playsInline
                     preload="auto"
                   >
-                    <source src="/media/dashboard.webm" type="video/webm" />
+                    <source src="/media/dashboard.mp4" type="video/webm" />
                     {/* Fallback para navegadores que no soporten WebM */}
                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
                       <div className="text-center space-y-4">
