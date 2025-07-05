@@ -18,7 +18,17 @@ export const metadata: Metadata = {
   description:
     "Crea matrices de riesgo en minutos con inteligencia artificial. Reduce el tiempo de análisis en 95%.",
   icons: {
-    icon: "logo/favicon.svg",
+    icon: [
+      {
+        url: "/favicon.svg", // ← Cambiar de "logo/favicon.svg" a "/favicon.svg"
+        type: "image/svg+xml",
+      },
+      {
+        url: "/favicon.svg", // ← Agregar fallback para navegadores viejos
+        sizes: "any",
+      },
+    ],
+    apple: "/favicon.svg", // ← Para dispositivos Apple
   },
 };
 
