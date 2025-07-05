@@ -1,0 +1,11 @@
+services:
+  landing-mitiga-riesgo:
+    build: .
+    container_name: landing-mitiga-riesgo
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1024MiB
+    ports:
+      - "3030:3030"
