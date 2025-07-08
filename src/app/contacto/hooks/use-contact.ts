@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FormData } from "../_components/types";
+import toast from "react-hot-toast";
 
 async function submitContactForm(formData: FormData): Promise<void> {
   const GOOGLE_SCRIPT_URL =
@@ -56,7 +57,7 @@ export function useContact() {
       await submitContactForm(formData);
 
       setIsSubmitted(true);
-
+      toast.success("¡Mensaje enviado exitosamente!");
       setFormData({
         name: "",
         email: "",
