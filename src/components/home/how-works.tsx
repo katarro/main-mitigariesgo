@@ -3,6 +3,7 @@ import { ArrowRight, Clock, Zap } from "lucide-react";
 import { howItWorks } from "../../utils/consts";
 import VideoPlayer from "./video-player";
 
+
 const HowItWorksSection: React.FC = () => {
   return (
     <section
@@ -34,6 +35,7 @@ const HowItWorksSection: React.FC = () => {
             <div className="relative bg-gray-50/90 dark:bg-corporate-blue-primary/30 backdrop-blur-lg rounded-2xl p-6 border border-corporate-orange-primary/20 dark:border-info-500/30 shadow-corporate">
               <div className="relative w-full rounded-xl overflow-hidden shadow-inner bg-corporate-blue-primary/5 dark:bg-corporate-blue-secondary/30">
                 <VideoPlayer />
+
 
                 {/* Overlay sutil */}
                 <div className="absolute inset-0 bg-black/5 dark:bg-black/10 pointer-events-none"></div>

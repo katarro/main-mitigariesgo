@@ -213,6 +213,7 @@ const ProjectionsSection: React.FC = () => {
                 number: "8hrs",
                 label: "Tiempo Ahorrado por Matriz",
                 description: "Comparado con métodos tradicionales",
+
               },
               {
                 number: "24/7",
