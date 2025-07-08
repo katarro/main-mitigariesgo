@@ -229,7 +229,7 @@ export const faqs = [
   {
     question: "¿Cómo garantizan la precisión del análisis?",
     answer:
-      "Nuestro sistema tiene un 98% de precisión en identificación de riesgos, validado con más de 10.000 matrices analizadas. La IA se entrena constantemente con datos actualizados del sector.",
+      "Nuestro sistema ha sido validado con más de 10.000 matrices analizadas. La IA se entrena constantemente con datos actualizados del sector.",
   },
   {
     question: "¿Qué industrias están soportadas?",

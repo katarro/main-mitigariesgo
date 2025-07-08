@@ -37,10 +37,12 @@ const FinalCTASection: React.FC = () => {
               </div>
               <div className="text-sm text-white/80">Menos Tiempo</div>
             </div>
-            <div className="text-center">
+
+            {/* <div className="text-center">
               <div className="text-2xl font-bold text-info-500  mb-1">98%</div>
               <div className="text-sm text-white/80">Precisión</div>
-            </div>
+            </div> */}
+
             <div className="text-center">
               <div className="text-2xl font-bold text-info-300 dark:text-info-400 mb-1">
                 10min
