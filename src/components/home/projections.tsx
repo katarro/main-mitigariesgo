@@ -205,14 +205,14 @@ const ProjectionsSection: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                number: "98%",
-                label: "Precisión en Predicciones",
-                description: "Basado en análisis de datos históricos",
+                number: "<10 minutos",
+                label: "Tiempo Promedio de Análisis",
+                description: "Matrices de riesgo completas en minutos",
               },
               {
-                number: "75%",
-                label: "Reducción de Incidentes",
-                description: "En empresas que usan nuestras proyecciones",
+                number: "8hrs",
+                label: "Tiempo Ahorrado por Matriz",
+                description: "Comparado con métodos tradicionales",
               },
               {
                 number: "24/7",

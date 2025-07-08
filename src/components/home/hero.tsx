@@ -51,9 +51,9 @@ const HeroSection: React.FC = () => {
             <div className="mb-10">
               <p className="text-lg sm:text-xl text-slate-200 leading-relaxed">
                 Reduce el tiempo de análisis en un{" "}
-                <strong className="text-yellow-300 text-2xl">95%</strong> con
-                precisión del{" "}
-                <strong className="text-green-300 text-2xl">98%</strong>.
+                <strong className="text-yellow-300 text-2xl">95%</strong>
+                {/* con precisión del{" "} */}
+                {/* <strong className="text-green-300 text-2xl">98%</strong>. */}
               </p>
             </div>
           </div>
