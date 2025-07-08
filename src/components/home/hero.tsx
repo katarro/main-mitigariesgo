@@ -70,13 +70,17 @@ const HeroSection: React.FC = () => {
                 <span>Crear Matriz Ahora</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-2 transition-transform" />
               </a>
-              <button className="inline-flex items-center justify-center space-x-3 bg-white/15 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/25 transition-all group shadow-xl">
+              <a
+                href="https://www.youtube.com/watch?v=ngrDbtb7qag"
+                type="button"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center space-x-3 bg-white/15 backdrop-blur-md border-2 border-white/30 text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/25 transition-all group shadow-xl"
+              >
                 <Play className="h-5 w-5 group-hover:scale-125 transition-transform" />
                 <span>Ver Demo</span>
-              </button>
+              </a>
             </div>
-
-            {/* Stats Section con mejor diseño */}
           </div>
         </div>
       </div>
