@@ -9,10 +9,13 @@ import PricingSection from "../components/home/plans";
 import FAQSection from "../components/home/faqs";
 import FinalCTASection from "../components/home/cta";
 import Footer from "../components/home/footer";
+// import HomePage from "./home/page";
 
 const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+      {/* <HomePage /> */}
+
       <Header />
 
       <HeroSection />

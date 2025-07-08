@@ -1,6 +1,7 @@
 import React from "react";
-import { ArrowRight, Clock, Play, Zap } from "lucide-react";
+import { ArrowRight, Clock, Zap } from "lucide-react";
 import { howItWorks } from "../../utils/consts";
+import VideoPlayer from "./video-player";
 
 const HowItWorksSection: React.FC = () => {
   return (
@@ -32,37 +33,7 @@ const HowItWorksSection: React.FC = () => {
             {/* Contenedor del video */}
             <div className="relative bg-gray-50/90 dark:bg-corporate-blue-primary/30 backdrop-blur-lg rounded-2xl p-6 border border-corporate-orange-primary/20 dark:border-info-500/30 shadow-corporate">
               <div className="relative w-full rounded-xl overflow-hidden shadow-inner bg-corporate-blue-primary/5 dark:bg-corporate-blue-secondary/30">
-                {/* Video Vertical */}
-                <video
-                  className="w-full h-full object-cover rounded-xl"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="auto"
-                >
-                  <source
-                    src="/media/video-demostrativo.mp4"
-                    type="video/mp4"
-                  />
-
-                  {/* Fallback para navegadores que no soporten el video */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center space-y-4 p-6">
-                      <div className="w-16 h-16 bg-corporate-orange-primary/20 dark:bg-info-500/30 rounded-full flex items-center justify-center mx-auto">
-                        <Play className="h-8 w-8 text-corporate-orange-primary dark:text-info-500" />
-                      </div>
-                      <div className="space-y-2">
-                        <div className="text-lg font-semibold text-corporate-blue-primary dark:text-white">
-                          Proceso Zero Risk AI
-                        </div>
-                        <div className="text-sm text-corporate-blue-primary/70 dark:text-white/70">
-                          Video no disponible
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </video>
+                <VideoPlayer />
 
                 {/* Overlay sutil */}
                 <div className="absolute inset-0 bg-black/5 dark:bg-black/10 pointer-events-none"></div>
