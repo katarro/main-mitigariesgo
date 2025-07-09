@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 async function submitContactForm(formData: FormData): Promise<void> {
   const GOOGLE_SCRIPT_URL =
-    "https://script.google.com/macros/s/AKfycbyd2tAS4Xx0O_6hQrG3UhCMnzJS7sUc1VD5k9sYl0R9EpQiEHwDmMzEx7fac5Y2JOvZWw/exec";
+    "https://script.google.com/macros/s/AKfycbyequKIbsv0A_TnpajsIx-sYjiNlowZHaO4w52MgXhU2dmmxrhMqqiyRjsgM19ztWSyYA/exec";
 
   const submitData = {
     ...formData,
