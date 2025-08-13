@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./theme-provider";
+import BetaBanner from "./beta-banner"; // Assuming you create this file
 import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
       >
+ <BetaBanner /> {/* Add the beta banner here */}
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
