@@ -2,6 +2,7 @@
 
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link"; // Import Link component
 import { X, RotateCcw, Send } from "lucide-react";
 import { ChatMessage, ChatState } from "./types";
 
@@ -33,11 +34,10 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   }, [messages]);
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl flex flex-col w-80 h-96">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl flex flex-col sm:w-[400px] sm:h-[600px] w-full h-full">
       <div className="flex justify-between items-center bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-800 dark:to-indigo-900 text-white p-3 rounded-t-xl">
         <div className="flex items-center space-x-2">
-          <Image src="/logo/logo-claro.svg" alt="ZenomyAI Logo" width={24} height={24} />
-          <h3 className="text-lg font-bold">Chatbot ZenomyAI</h3>
+          <Image src="/logo/logo-claro.svg" alt="ZenomyAI Logo" width={150} height={48} />
         </div>
         <div className="flex items-center space-x-2">
           <button
@@ -110,6 +110,14 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
           </button>
         </div>
       </form>
+
+      {/* Footer con la marca ZenomyAI */}
+      <div className="p-2 text-center text-xs text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+        Desarrollado por{' '}
+        <Link href="https://zenomyai.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline dark:text-blue-400">
+          ZenomyAI
+        </Link>
+      </div>
     </div>
   );
 };

@@ -2,120 +2,38 @@
 
 import React, { useState, useEffect } from "react";
 import { MessageCircle } from "lucide-react";
-import { ChatMessage, ChatState } from "./types";
 import ChatWindow from "./chat-window";
-import { CHATBOT_API_URL } from "../../utils/api-consts";
+import { useChatSession } from "./use-chat-session";
+import { ChatMessage } from "./types";
 
 const ChatBubble: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [inputMessage, setInputMessage] = useState("");
-  const [chatState, setChatState] = useState<ChatState | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [showTeaser, setShowTeaser] = useState(false);
 
-  const API_URL = CHATBOT_API_URL;
-
-  const initializeChat = (): string => {
-    const newSessionId = `D${Date.now()}`;
-    localStorage.setItem("chat_session_id", newSessionId);
-    localStorage.removeItem(`chat_history_${chatState?.session_id}`);
-
-    const initialChatState: ChatState = {
-      session_id: newSessionId,
-      username: "",
-      company: "",
-      role: "",
-      step: "initial",
-      history: [],
-    };
-    setChatState(initialChatState);
-    setMessages([]);
-    return newSessionId;
-  };
+  const {
+    chatState,
+    messages,
+    setMessages,
+    isLoading,
+    hasOpenedChat,
+    setHasOpenedChat,
+    handleInitializeChat,
+    askBot,
+    handleOpenChat: sessionHandleOpenChat,
+  } = useChatSession({ isOpen });
 
   useEffect(() => {
-    let currentSessionId = localStorage.getItem("chat_session_id");
-    if (!currentSessionId) {
-      initializeChat();
-      return;
+    if (!isOpen && !hasOpenedChat) {
+      const timer = setTimeout(() => {
+        setShowTeaser(true);
+      }, 3000); // Show after 3 seconds
+
+      return () => clearTimeout(timer);
+    } else {
+      setShowTeaser(false);
     }
-
-    const initialChatState: ChatState = {
-      session_id: currentSessionId,
-      username: "",
-      company: "",
-      role: "",
-      step: "initial",
-      history: [],
-    };
-    setChatState(initialChatState);
-
-    const storedMessages = localStorage.getItem(`chat_history_${currentSessionId}`);
-    if (storedMessages) {
-      const parsedMessages = JSON.parse(storedMessages);
-      setMessages(parsedMessages);
-    } else if (isOpen) {
-        askBot("start_conversation", initialChatState.session_id);
-    }
-
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (chatState?.session_id && messages.length > 0) {
-      localStorage.setItem(`chat_history_${chatState.session_id}`, JSON.stringify(messages));
-    }
-  }, [messages, chatState?.session_id]);
-
-  const askBot = async (question: string, sessionId: string) => {
-    setIsLoading(true);
-    try {
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          session_id: sessionId,
-          question: question,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("API Response:", data);
-
-      const botMessage: ChatMessage = {
-        role: "bot",
-        message: data.response || "Lo siento, no pude obtener una respuesta.",
-        timestamp: new Date().toISOString(),
-      };
-
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
-
-      setChatState((prevState) => {
-        if (!prevState) return null;
-        return {
-          ...prevState,
-          username: data.username || prevState.username,
-          company: data.company || prevState.company,
-          role: data.role || prevState.role,
-          step: data.step || prevState.step,
-          history: data.history || prevState.history,
-        };
-      });
-    } catch (error) {
-      console.error("Error al comunicarse con el bot:", error);
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { role: "bot", message: "Ha ocurrido un error al intentar comunicarme. Por favor, inténtalo de nuevo.", timestamp: new Date().toISOString() },
-      ]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  }, [isOpen, hasOpenedChat]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -134,22 +52,34 @@ const ChatBubble: React.FC = () => {
   };
 
   const handleNewConversation = () => {
-    const newSessionId = initializeChat();
+    const newSessionId = handleInitializeChat();
     if (isOpen) {
-        askBot("start_conversation", newSessionId);
+        void askBot("start_conversation", newSessionId);
     }
   };
 
+  const openChat = () => {
+    setIsOpen(true);
+    sessionHandleOpenChat();
+  }
+
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className={`fixed z-50 ${isOpen ? "inset-0 flex items-center justify-center sm:inset-auto sm:bottom-6 sm:right-6" : "bottom-6 right-6"}`}>
       {!isOpen && (
-        <button
-          className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-full p-4 shadow-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 animate-pulse-slow"
-          onClick={() => setIsOpen(true)}
-          aria-label="Abrir chat"
-        >
-          <MessageCircle className="w-8 h-8" />
-        </button>
+        <>
+          {showTeaser && (
+            <div className="absolute right-full bottom-0 mr-4 p-3 bg-blue-500 text-white rounded-lg shadow-lg animate-fade-in-left origin-bottom-right">
+              <p className="text-sm font-semibold">¡Empieza tu introducción!</p>
+            </div>
+          )}
+          <button
+            className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-full p-4 shadow-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 animate-pulse-slow"
+            onClick={openChat}
+            aria-label="Abrir chat"
+          >
+            <MessageCircle className="w-8 h-8" />
+          </button>
+        </>
       )}
 
       {isOpen && (
@@ -162,7 +92,6 @@ const ChatBubble: React.FC = () => {
           handleSendMessage={handleSendMessage}
           handleNewConversation={handleNewConversation}
           isLoading={isLoading}
-          API_URL={API_URL}
         />
       )}
     </div>
