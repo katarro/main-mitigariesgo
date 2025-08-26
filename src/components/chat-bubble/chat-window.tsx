@@ -4,7 +4,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link"; // Import Link component
 import { X, RotateCcw, Send } from "lucide-react";
-import { ChatMessage, ChatState } from "./types";
+import { ChatMessage } from "./types";
 
 interface ChatWindowProps {
   isOpen: boolean;
@@ -20,7 +20,6 @@ interface ChatWindowProps {
 }
 
 const ChatWindow: React.FC<ChatWindowProps> = ({
-  isOpen,
   setIsOpen,
   messages,
   inputMessage,

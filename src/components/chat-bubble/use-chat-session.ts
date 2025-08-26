@@ -47,7 +47,7 @@ export const useChatSession = ({ isOpen }: UseChatSessionProps): UseChatSessionR
       setHasOpenedChat(JSON.parse(storedHasOpenedChat));
     }
 
-    let currentSessionId = localStorage.getItem("chat_session_id");
+    const currentSessionId = localStorage.getItem("chat_session_id");
     if (!currentSessionId) {
       handleInitializeChat();
       return;

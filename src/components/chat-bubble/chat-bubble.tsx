@@ -17,7 +17,6 @@ const ChatBubble: React.FC = () => {
     setMessages,
     isLoading,
     hasOpenedChat,
-    setHasOpenedChat,
     handleInitializeChat,
     askBot,
     handleOpenChat: sessionHandleOpenChat,
