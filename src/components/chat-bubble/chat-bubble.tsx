@@ -63,6 +63,21 @@ const ChatBubble: React.FC = () => {
     sessionHandleOpenChat();
   }
 
+  const sendQuickOption = async (option: string) => {
+    if (!chatState || isLoading) return;
+
+    const newUserMessage: ChatMessage = {
+      role: "user",
+      message: option,
+      timestamp: new Date().toISOString(),
+    };
+
+    setMessages((prevMessages) => [...prevMessages, newUserMessage]);
+    setInputMessage(option); // Set the input message to the quick option text
+
+    await askBot(option, chatState.session_id);
+  };
+
   return (
     <div className={`fixed z-50 ${isOpen ? "inset-0 flex items-center justify-center sm:inset-auto sm:bottom-6 sm:right-6" : "bottom-6 right-6"}`}>
       {!isOpen && (
@@ -92,6 +107,7 @@ const ChatBubble: React.FC = () => {
           handleSendMessage={handleSendMessage}
           handleNewConversation={handleNewConversation}
           isLoading={isLoading}
+          sendQuickOption={sendQuickOption} // Pass the new prop
         />
       )}
     </div>

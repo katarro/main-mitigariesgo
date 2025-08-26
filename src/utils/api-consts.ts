@@ -1,1 +1,1 @@
-export const CHATBOT_API_URL = "https://781634be2dad.ngrok-free.app/bot/onboarding/ask";
+export const CHATBOT_API_URL = "https://d9eb4ca86d95.ngrok-free.app/bot/onboarding/ask";

@@ -15,6 +15,8 @@ interface ChatWindowProps {
   handleSendMessage: (e: React.FormEvent) => void;
   handleNewConversation: () => void;
   isLoading: boolean;
+  // New prop for quick options
+  sendQuickOption: (option: string) => void;
 }
 
 const ChatWindow: React.FC<ChatWindowProps> = ({
@@ -26,15 +28,26 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   handleSendMessage,
   handleNewConversation,
   isLoading,
+  sendQuickOption,
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const quickOptions = [
+    "¿Qué servicios ofrecen?",
+    "Me gustaría probar la plataforma",
+    "Cuentame sobre la IA de MitigaRiesgo"
+  ];
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  const handleQuickOptionClick = (option: string) => {
+    setInputMessage(option);
+    sendQuickOption(option);
+  };
+
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl flex flex-col sm:w-[400px] sm:h-[600px] w-full h-full">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl flex flex-col sm:w-[350px] sm:h-[500px] w-full h-full">
       <div className="flex justify-between items-center bg-gradient-to-r from-blue-600 to-indigo-700 dark:from-blue-800 dark:to-indigo-900 text-white p-3 rounded-t-xl">
         <div className="flex items-center space-x-2">
           <Image src="/logo/logo-claro.svg" alt="ZenomyAI Logo" width={150} height={48} />
@@ -89,6 +102,21 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
         )}
         <div ref={messagesEndRef} />
       </div>
+
+      {/* Quick Options Section */}
+      {!isLoading && (
+        <div className="p-3 border-t border-gray-200 dark:border-gray-700 flex flex-wrap gap-2 justify-center">
+          {quickOptions.map((option, index) => (
+            <button
+              key={index}
+              onClick={() => handleQuickOptionClick(option)}
+              className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full border border-gray-300 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200"
+            >
+              {option}
+            </button>
+          ))}
+        </div>
+      )}
 
       <form onSubmit={handleSendMessage} className="p-3 border-t border-gray-200 dark:border-gray-700">
         <div className="flex">
