@@ -32,7 +32,8 @@ const ChatBubble: React.FC = () => {
     } else {
       setShowTeaser(false);
     }
-  }, [isOpen, hasOpenedChat]);
+  },
+   [isOpen, hasOpenedChat]);
 
   const handleSendMessage = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,7 +73,8 @@ const ChatBubble: React.FC = () => {
     };
 
     setMessages((prevMessages) => [...prevMessages, newUserMessage]);
-    setInputMessage(option); // Set the input message to the quick option text
+    // Removed setInputMessage(option) so the input field clears after a quick option is sent.
+    setInputMessage("");
 
     await askBot(option, chatState.session_id);
   };
@@ -82,12 +84,12 @@ const ChatBubble: React.FC = () => {
       {!isOpen && (
         <>
           {showTeaser && (
-            <div className="absolute right-full bottom-0 mr-4 p-3 bg-blue-500 text-white rounded-lg shadow-lg animate-fade-in-left origin-bottom-right">
+            <div className="absolute right-full bottom-0 mr-4 p-3 bg-amber-500 text-white rounded-lg shadow-lg animate-fade-in-left origin-bottom-right">
               <p className="text-sm font-semibold">¡Empieza tu introducción!</p>
             </div>
           )}
           <button
-            className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-full p-4 shadow-lg hover:from-blue-700 hover:to-indigo-800 transition-all duration-300 animate-pulse-slow"
+            className="bg-gradient-to-br from-amber-600 to-amber-700 text-white rounded-full p-4 shadow-lg hover:from-amber-700 hover:to-amber-800 transition-all duration-300 animate-pulse-slow"
             onClick={openChat}
             aria-label="Abrir chat"
           >
