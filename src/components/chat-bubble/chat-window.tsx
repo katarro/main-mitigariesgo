@@ -32,7 +32,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const quickOptions = [
     "¿Qué servicios ofrecen?",
-    "Me gustaría probar la plataforma",
+    "¿Tienen una prueba gratuita?",
     "Cuentame sobre la IA de MitigaRiesgo"
   ];
 
