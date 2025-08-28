@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { EarlyStagesModal } from "src/components/early-stages/early-stages-modal";
 
 const BetaBanner: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -10,10 +11,11 @@ const BetaBanner: React.FC = () => {
   }
 
   return (
-    <div className="relative bg-yellow-400 text-yellow-900 p-3 text-center w-full shadow-md flex items-center justify-center space-x-4 rounded-b-lg">
-      <span className="font-semibold text-sm md:text-base">
+    <div className="relative bg-yellow-400 text-yellow-900 p-3 text-center w-full shadow-md flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 rounded-b-lg">
+      <span className="font-semibold text-sm md:text-base px-4">
         ¡Estamos en las fases iniciales de la app! Pronto habrá muchas más características y mejoras.
       </span>
+      <EarlyStagesModal />
       <button
         onClick={() => setIsVisible(false)}
         className="absolute right-4 top-1/2 -translate-y-1/2 text-yellow-900 hover:text-yellow-700 transition-colors duration-200"
