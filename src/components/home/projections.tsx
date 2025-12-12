@@ -108,81 +108,45 @@ const ProjectionsSection: React.FC = () => {
                 className="inline-flex items-center space-x-3 bg-accent-500 from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105"
               >
                 <BarChart3 className="h-5 w-5" />
-                <span>Ver Dashboard en Acción</span>
+                <span>Descubrir Beneficios Únicos</span>
               </a>
             </div>
           </div>
 
-          {/* Right Column - Visual Content */}
+          {/* Right Column - Client Success Story */}
           <div className="space-y-8">
-            {/* Main Dashboard Video */}
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-3xl blur-2xl"></div>
-              <div className="relative bg-gray-50/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-2xl p-6 border border-gray-200/60 dark:border-slate-700/50 shadow-xl">
-                <div className="relative h-80 w-full rounded-xl overflow-hidden shadow-inner">
-                  {/* Video del Dashboard */}
-                  <video
-                    className="w-full h-64 sm:h-80 lg:h-96 object-contain rounded-xl bg-gray-100 dark:bg-gray-800"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                  >
-                    <source src="/media/dashboard.mp4" type="video/webm" />
-                    {/* Fallback para navegadores que no soporten WebM */}
-                    <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
-                      <div className="text-center space-y-4">
-                        <BarChart3 className="h-16 w-16 text-blue-400 mx-auto" />
-                        <div className="space-y-2">
-                          <div className="text-lg font-semibold text-slate-700 dark:text-slate-300">
-                            Dashboard Interactivo
-                          </div>
-                          <div className="text-sm text-slate-500 dark:text-slate-400">
-                            Tu navegador no soporta este video
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </video>
-
-                  {/* Overlay sutil para mejorar la legibilidad del badge */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-black/10 pointer-events-none"></div>
-                </div>
-
-                {/* Badge flotante */}
-                <div className="absolute -top-3 -right-3 bg-blue-500 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg">
-                  ✓ En Vivo
-                </div>
+            <div className="relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 rounded-2xl p-8 border border-slate-200 dark:border-slate-700 shadow-xl">
+              {/* Quote Icon */}
+              <div className="absolute top-6 left-6 text-blue-200 dark:text-blue-900/30">
+                <svg className="h-12 w-12" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
               </div>
-            </div>
 
-            {/* Secondary Images Grid */}
-            <div className="grid grid-cols-2 gap-4">
-              {/* Reports Image */}
-              <div className="relative bg-gray-50/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl p-4 border border-gray-200/60 dark:border-slate-700/50 shadow-lg">
-                <div className="relative h-32 w-full rounded-lg overflow-hidden bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <FileText className="h-8 w-8 text-green-500 mx-auto mb-2" />
-                      <div className="text-xs font-medium text-slate-600 dark:text-slate-400">
-                        Reportes PDF
-                      </div>
-                    </div>
+              <div className="relative z-10">
+                {/* Quote */}
+                <p className="text-lg text-slate-700 dark:text-slate-300 mb-6 italic">
+                  "Implementamos las proyecciones inteligentes y en 3 meses redujimos nuestros riesgos operacionales en un 42%. El dashboard predictivo nos permitió anticiparnos a problemas que antes nos tomaban por sorpresa."
+                </p>
+
+                {/* Client Info */}
+                <div className="flex items-center space-x-4">
+                  <div className="h-12 w-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                  <div>
+                    <div className="font-bold text-slate-800 dark:text-white">María González</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Directora de Riesgos</div>
                   </div>
                 </div>
-              </div>
 
-              {/* Analytics Image */}
-              <div className="relative bg-gray-50/90 dark:bg-slate-800/90 backdrop-blur-lg rounded-xl p-4 border border-gray-200/60 dark:border-slate-700/50 shadow-lg">
-                <div className="relative h-32 w-full rounded-lg overflow-hidden bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <TrendingUp className="h-8 w-8 text-blue-500 mx-auto mb-2" />
-                      <div className="text-xs font-medium text-slate-600 dark:text-slate-400">
-                        Análisis Avanzado
-                      </div>
-                    </div>
+                {/* Results */}
+                <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 grid grid-cols-2 gap-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">42%</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Reducción de riesgos</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">15h</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-400">Ahorro semanal</div>
                   </div>
                 </div>
               </div>
