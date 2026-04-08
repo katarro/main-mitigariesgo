@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./theme-provider";
+import BetaBanner from "./beta-banner"; // Assuming you create this file
 import { Toaster } from "react-hot-toast";
+import ChatBubble from "../components/chat-bubble/chat-bubble"; // Import the ChatBubble component
+import Script from 'next/script'; // Import the Script component
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,9 +43,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-4MGKX1Q4NB"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-4MGKX1Q4NB');
+        `}
+      </Script>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased transition-colors duration-300`}
       >
+ <BetaBanner /> {/* Add the beta banner here */}
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -95,6 +113,7 @@ export default function RootLayout({
             }}
           />
         </ThemeProvider>
+        <ChatBubble /> {/* Add the ChatBubble component here */}
       </body>
     </html>
   );
